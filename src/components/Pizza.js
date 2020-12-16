@@ -1,12 +1,26 @@
 import React from "react"
 
-const Pizza = () => {
+const Pizza = (props) => {
+  let pizza = props.pizza
+
+  const handleVeg = (veg) => {
+    if (veg) {
+      return "Yes"
+    } else {
+      return "No"
+    }
+  }
+
+  const handleEdit = () => {
+    props.editPizza(props.pizza)
+  }
+
   return(
     <tr>
-      <td>{"Replace Me With Pizza Topping"}</td>
-      <td>{"Replace Me With Pizza Size"}</td>
-      <td>{"Replace Me With Vegatarian"}</td>
-      <td><button type="button" className="btn btn-primary">Edit Pizza</button></td>
+      <td>{pizza.topping}</td>
+      <td>{pizza.size}</td>
+      <td>{handleVeg(pizza.vegetarian)}</td>
+      <td><button type="button" className="btn btn-primary" onClick={() => handleEdit()}>Edit Pizza</button></td>
     </tr>
   )
 }
